@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ycw.common.response.ResponseVO;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * @类名称 GlobalExceptionHandler.java
  * @类描述 全局异常处理
@@ -31,6 +33,7 @@ import com.ycw.common.response.ResponseVO;
  *     ----------------------------------------------
  *       </pre>
  */
+@Slf4j
 @ControllerAdvice
 @ResponseBody
 public class GlobalExceptionHandler {
@@ -131,9 +134,9 @@ public class GlobalExceptionHandler {
 	}
 
 	private <T extends Throwable> ResponseVO<Object> responseFormat(Integer code, T ex) {
-
-		return ResponseVO.fail(code,
-				(ex.getMessage() == null || "".equals(ex.getMessage())) ? "系统异常，请联系管理员" : ex.getMessage());
+		String message = ex.getMessage() == null || "".equals(ex.getMessage()) ? "系统异常，请联系管理员" : ex.getMessage();
+		log.error(message, ex);
+		return ResponseVO.fail(code,message);
 	}
 
 }

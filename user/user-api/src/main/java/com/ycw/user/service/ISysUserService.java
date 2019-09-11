@@ -1,8 +1,11 @@
 package com.ycw.user.service;
 
+import com.github.pagehelper.PageInfo;
 import com.ycw.common.exception.MsgException;
+import com.ycw.common.page.PageParams;
 import com.ycw.common.response.ResponseVO;
 import com.ycw.user.vo.SysUserVO;
+import com.ycw.user.vo.params.SysUserParamsVO;
 
 /**
  * @类名称 SysUserService
@@ -21,13 +24,25 @@ public interface ISysUserService {
 
 	/**
 	 * @方法名称  getSysUser
-	 * @功能描述 <pre>根据id查询【系统用户表】数据</pre>
+	 * @功能描述 根据id查询【系统用户表】数据
 	 * @作者    yuminjun
 	 * @创建时间 2019/08/28 14:17
 	 * @param id 主键id
 	 * @return
 	 * @throws MsgException
-	 */ 
-	ResponseVO<SysUserVO> getSysUser(Long id) throws MsgException;
+	 */
+	ResponseVO<SysUserVO> getSysUser(Long id);
+
+	/**
+	 * @方法名称 findSysUserList
+	 * @功能描述 【系统用户表】列表查询
+	 * @作者     yuminjun
+	 * @创建时间 2019年9月9日 下午5:49:58
+	 * @param vo 查询参数
+	 * @param pageParams 分页参数
+	 * @return
+	 */
+	ResponseVO<PageInfo<SysUserParamsVO>> querySysUserPage
+	(SysUserParamsVO vo, PageParams pageParams);
 
 }

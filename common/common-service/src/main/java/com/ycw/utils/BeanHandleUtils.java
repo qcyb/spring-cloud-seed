@@ -4,6 +4,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
 
 import org.springframework.beans.BeanUtils;
+import org.springframework.cglib.beans.BeanMap;
 
 import com.ycw.common.exception.MsgException;
 import com.ycw.common.response.ResponseCode;
@@ -17,20 +18,19 @@ public class BeanHandleUtils extends BeanUtils {
 	 * @创建时间 2019年8月29日 下午6:00:11
 	 * @param <T>
 	 * @param source
-	 * @param targetBean
+	 * @param targetClass
 	 * @return
 	 * @throws MsgException
 	 */
-	public static <T> T beanCopy(Object source, Class<T> targetBean) throws MsgException {
+	public static <T> T beanCopy(Object source, Class<T> targetClass) {
 		if (null == source)
 			return null;
 		T target = null;
 		try {
-			target = targetBean.newInstance();
+			target = targetClass.newInstance();
 			copyProperties(source, target);
 		} catch (InstantiationException | IllegalAccessException e) {
-			throw new MsgException(ResponseCode.ERR_500.getCode(),
-					"bean转换异常：【" + source.getClass().getName() + "】转换成【" + targetBean.getName() + "】失败", e);
+			throw new RuntimeException("bean转换异常：【" + source.getClass().getName() + "】转换成【" + targetClass.getName() + "】失败", e);
 		}
 		return target;
 	}
@@ -42,20 +42,19 @@ public class BeanHandleUtils extends BeanUtils {
 	 * @创建时间 2019年8月30日 下午1:54:54
 	 * @param <T>
 	 * @param map
-	 * @param targetBean
+	 * @param targetClass
 	 * @return
 	 * @throws MsgException
 	 */
-	public static <T> T mapToBean(Map<String, Object> map, Class<T> targetBean) throws MsgException {
+	public static <T> T mapToBean(Map<String, Object> map, Class<T> targetClass) throws MsgException {
 		if (map == null)
 			return null;
 		T obj = null;
 		try {
-			obj = targetBean.newInstance();
+			obj = targetClass.newInstance();
 			org.apache.commons.beanutils.BeanUtils.populate(obj, map);
 		} catch (IllegalAccessException | InvocationTargetException | InstantiationException e) {
-			throw new MsgException(ResponseCode.ERR_500.getCode(),
-					"map转换异常：【" + map.getClass().getName() + "】转换成【" + targetBean.getName() + "】失败", e);
+			throw new RuntimeException("map转换异常：【" + map.getClass().getName() + "】转换成【" + targetClass.getName() + "】失败", e);
 		}
 		return obj;
 	}
@@ -67,10 +66,12 @@ public class BeanHandleUtils extends BeanUtils {
 	 * @创建时间 2019年8月30日 下午1:55:26
 	 * @param source
 	 * @return
+	 * @return
 	 */
-	public static Map<Object, Object> beanToMap(Object source) {
+	@SuppressWarnings("unchecked")
+	public static Map<String, Object> beanToMap(Object source) {
 		if (source == null)
 			return null;
-		return new org.apache.commons.beanutils.BeanMap(source);
+		return BeanMap.create(source);
 	}
 }

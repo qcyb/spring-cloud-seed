@@ -61,16 +61,24 @@ spring:
     #time-to-live: 0ms
     # 是否启用 Redis 的键前缀
     #use-key-prefix: true
+    
+# pagehelper 配置
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+  
 # Mybatis Plus配置
 mybatis-plus:
   global-config:
     banner: false
-  mapper-locations: classpath:mybatis/mapper/**/*.xml
+  mapper-locations: classpath*:mybatis/mapper/**/*.xml
   configuration:
     # 配置返回数据库(column下划线命名&&返回java实体是驼峰命名)，自动匹配无需as
     map-underscore-to-camel-case: true
     cache-enabled: false
-    #log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
  
 # Feign配置信息
 feign:

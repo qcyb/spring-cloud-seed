@@ -40,63 +40,67 @@
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 		<dependency>
-		    <groupId>org.springframework.cloud</groupId>
-		    <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
-		    <version>2.1.0.RELEASE</version>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+			<version>2.1.0.RELEASE</version>
 		</dependency>
 		<dependency>
-               <groupId>org.springframework.cloud</groupId>
-               <artifactId>spring-cloud-dependencies</artifactId>
-               <version>${spring-cloud.version}</version>
-               <type>pom</type>
-               <scope>import</scope>
-        </dependency>
-	    <dependency>
-	        <groupId>org.springframework.cloud</groupId>
-	        <artifactId>spring-cloud-starter-consul-all</artifactId>
-	        <version>${consul.version}</version>
-	    </dependency>
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.springframework.data</groupId> -->
-<!-- 			<artifactId>spring-data-redis</artifactId> -->
-<!-- 		</dependency> -->
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-dependencies</artifactId>
+			<version>${spring-cloud.version}</version>
+			<type>pom</type>
+			<scope>import</scope>
+		</dependency>
 		<dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-consul-all</artifactId>
+			<version>${consul.version}</version>
+		</dependency>
+		<!-- <dependency> -->
+		<!-- <groupId>org.springframework.data</groupId> -->
+		<!-- <artifactId>spring-data-redis</artifactId> -->
+		<!-- </dependency> -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 		</dependency>
 		<!-- JDBC -->
-	    <dependency>
-	      <groupId>mysql</groupId>
-	      <artifactId>mysql-connector-java</artifactId>
-	    </dependency>
-	    <dependency>
-	      <groupId>com.alibaba</groupId>
-	      <artifactId>druid-spring-boot-starter</artifactId>
-	      <version>1.1.9</version>
-	    </dependency>
-	    <dependency>
-	      <groupId>org.springframework.boot</groupId>
-	      <artifactId>spring-boot-starter-jdbc</artifactId>
-	    </dependency>
 		<dependency>
-		    <groupId>com.baomidou</groupId>
-		    <artifactId>mybatis-plus-boot-starter</artifactId>
-		    <version>${mybatis-plus.version}</version>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid-spring-boot-starter</artifactId>
+			<version>1.1.9</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.baomidou</groupId>
+			<artifactId>mybatis-plus-boot-starter</artifactId>
+			<version>${mybatis-plus.version}</version>
+		</dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<scope>provided</scope>
 		</dependency>
-<!-- 		<dependency> -->
-<!-- 			<groupId>com.xuxueli</groupId> -->
-<!-- 			<artifactId>xxl-job-core</artifactId> -->
-<!-- 			<version>${xxl-job.version}</version> -->
-<!-- 		</dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>com.xuxueli</groupId> -->
+		<!-- <artifactId>xxl-job-core</artifactId> -->
+		<!-- <version>${xxl-job.version}</version> -->
+		<!-- </dependency> -->
 	</dependencies>
 
 	<repositories>
@@ -104,14 +108,25 @@
 			<snapshots>
 				<updatePolicy>always</updatePolicy>
 			</snapshots>
-			<id>aliyun-public</id>
-			<url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+			<id>ycw-public</id>
+			<url>http://39.105.58.23:8081/repository/ycw-public/</url>
 		</repository>
 	</repositories>
+	<distributionManagement>
+		<repository>
+			<id>lexiangbao-releases</id>
+			<url>http://39.105.58.23:8081/repository/ycw-releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>lexiangbao-snapshots</id>
+			<url>http://39.105.58.23:8081/repository/ycw-snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
 
 	<modules>
 		<module>user</module>
 		<module>article</module>
 		<module>common</module>
 	</modules>
+
 </project>
