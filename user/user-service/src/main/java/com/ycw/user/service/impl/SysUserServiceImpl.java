@@ -10,12 +10,12 @@ import com.github.pagehelper.PageInfo;
 import com.ycw.common.exception.MsgException;
 import com.ycw.common.page.PageParams;
 import com.ycw.common.response.ResponseVO;
+import com.ycw.common.utils.BeanHandleUtils;
 import com.ycw.user.entity.SysUserEntity;
 import com.ycw.user.mapper.ISysUserMapper;
 import com.ycw.user.service.ISysUserService;
 import com.ycw.user.vo.SysUserVO;
 import com.ycw.user.vo.params.SysUserParamsVO;
-import com.ycw.utils.BeanHandleUtils;
 
 /**
  * @类名称 SysUserServiceImpl
@@ -38,29 +38,18 @@ public class SysUserServiceImpl implements ISysUserService {
 	@Autowired
 	private ISysUserMapper sysUserMapper;
 
-	/**
-	 * @方法名称 querySysUserPage
-	 * @功能描述  分页查询方法
-	 * @作者     yuminjun
-	 * @创建时间 2019年9月11日 下午5:59:14
-	 * @param vo
-	 * @param pageParams
-	 * @return
-	 */
 	@Override
-	public ResponseVO<PageInfo<SysUserParamsVO>> querySysUserPage(SysUserParamsVO vo, PageParams pageParams){
+	public ResponseVO<PageInfo<SysUserParamsVO>> querySysUserPage(SysUserParamsVO vo, PageParams pageParams) {
 		List<SysUserParamsVO> list = sysUserMapper.querySysUserList(vo);
 		return ResponseVO.success(new PageInfo<>(list));
 	}
 
-	/**
-	 * @方法名称 getSysUser
-	 * @功能描述  根据id查询用户
-	 * @作者 yuminjun
-	 * @创建时间 2019/08/28 14:17
-	 * @param id 主键id
-	 * @return
-	 */
+	@Override
+	public ResponseVO<List<SysUserParamsVO>> querySysUserList(SysUserParamsVO vo) {
+		List<SysUserParamsVO> list = sysUserMapper.querySysUserList(vo);
+		return ResponseVO.success(list);
+	}
+
 	@Override
 	public ResponseVO<SysUserVO> getSysUser(Long id) {
 		SysUserEntity sysUser = sysUserMapper.selectById(id);

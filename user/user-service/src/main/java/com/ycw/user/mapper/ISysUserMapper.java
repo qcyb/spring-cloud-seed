@@ -1,12 +1,10 @@
 package com.ycw.user.mapper;
 
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
 import com.ycw.common.base.BaseCrudMapper;
-import com.ycw.common.base.BaseVO;
 import com.ycw.user.entity.SysUserEntity;
 
 /**
@@ -31,7 +29,7 @@ public interface ISysUserMapper extends BaseCrudMapper<SysUserEntity> {
 	 * @作者    yuminjun
 	 * @创建时间 2019/08/28 14:17
 	 * @param params 查询参数<br>
-	 * @param <T>
+	 * @param <T> VO参数对象
 	 * @return
 	 */
 	<T> List<T> querySysUserList(T t);

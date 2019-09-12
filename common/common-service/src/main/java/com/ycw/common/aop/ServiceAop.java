@@ -1,4 +1,4 @@
-package com.ycw.aop;
+package com.ycw.common.aop;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -14,7 +14,8 @@ import com.ycw.common.page.PageParams;
 public class ServiceAop {
 
 	@Pointcut(value = "execution(public * com.ycw..*.service.impl.*.query*(..))")
-	private void queryMenthodPoint() {}
+	private void queryMenthodPoint() {
+	}
 
 	@Around(value = "queryMenthodPoint()")
 	public Object process(ProceedingJoinPoint point) throws Throwable {
@@ -22,6 +23,7 @@ public class ServiceAop {
 		Object[] args = point.getArgs();
 		if (args != null && args.length > 0) {
 			for (int i = args.length - 1; i >= 0; i--) {
+				// 设置分页参数
 				if (args[i] instanceof PageParams) {
 					PageParams pageParams = (PageParams) args[i];
 					PageHelper.startPage(pageParams.getPageNum(), pageParams.getPageSize());
@@ -30,8 +32,9 @@ public class ServiceAop {
 			}
 		}
 
-		Object returnValue = point.proceed(args);
 		// 用改变后的参数执行目标方法
+		Object returnValue = point.proceed(args);
+
 		return returnValue;
 	}
 

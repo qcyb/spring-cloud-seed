@@ -1,0 +1,47 @@
+package com.ycw.common.interceptor.web;
+
+import org.springframework.core.MethodParameter;
+import org.springframework.stereotype.Component;
+import org.springframework.web.bind.support.WebDataBinderFactory;
+import org.springframework.web.context.request.NativeWebRequest;
+import org.springframework.web.method.support.HandlerMethodArgumentResolver;
+import org.springframework.web.method.support.ModelAndViewContainer;
+
+import com.alibaba.druid.util.StringUtils;
+import com.ycw.common.page.PageParams;
+
+/**
+ * @类名称 PageParamsMethodArgumentResolver.java
+ * @类描述 分页方法参数处理
+ * @作者 yuminjun yuminjun@lexiangbao.com
+ * @创建时间 2019年9月12日 下午3:25:22
+ * @版本 1.00
+ *
+ * @修改记录
+ *
+ *       <pre>
+ *     版本                       修改人 		修改日期 		 修改内容描述
+ *     ----------------------------------------------
+ *     1.00 	yuminjun 	2019年9月12日
+ *     ----------------------------------------------
+ *       </pre>
+ */
+@Component
+public class PageParamsMethodArgumentResolver implements HandlerMethodArgumentResolver {
+
+	@Override
+	public boolean supportsParameter(MethodParameter parameter) {
+		return parameter.getParameterType().isAssignableFrom(PageParams.class);
+	}
+
+	@Override
+	public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer,
+			NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
+		String pageNum = webRequest.getParameter("pageNum");
+		String pageSize = webRequest.getParameter("pageSize");
+		PageParams pageParams = new PageParams(StringUtils.stringToInteger(pageNum),
+				StringUtils.stringToInteger(pageSize));
+		return pageParams;
+	}
+
+}

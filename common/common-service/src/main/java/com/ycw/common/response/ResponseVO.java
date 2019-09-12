@@ -2,46 +2,60 @@ package com.ycw.common.response;
 
 import java.io.Serializable;
 
+import com.ycw.common.utils.SpringUtils;
+
+import brave.Tracer;
+
 public class ResponseVO<T> implements Serializable {
+
 	private static final long serialVersionUID = 1L;
-	public static final int SUCCESS = 10000;
+
+	public static final int SUCCESS = 200;
+
 	private int code;
+
 	private String message;
+
 	private T data;
+
 	private long timestamp = System.currentTimeMillis();
+
 	private String traceId;
+
+	private ResponseVO() {
+	}
 
 	public static <D> ResponseVO<D> success(D data) {
 		return success((String) null, data);
 	}
 
 	public static <D> ResponseVO<D> success(String message, D data) {
-		ResponseVO<D> ResponseVO = new ResponseVO();
-		ResponseVO.setCode(10000);
-		ResponseVO.setMessage(message);
-		ResponseVO.setData(data);
-//		ResponseVO.setTraceId(getTransferTrace());
-		return ResponseVO;
+		ResponseVO<D> responseVO = new ResponseVO<>();
+		responseVO.setCode(SUCCESS);
+		responseVO.setMessage(message);
+		responseVO.setData(data);
+		responseVO.setTraceId(getTransferTrace());
+		return responseVO;
 	}
 
 	public static <D> ResponseVO<D> fail(int code, String message) {
-		ResponseVO<D> ResponseVO = new ResponseVO();
-		ResponseVO.setCode(code);
-		ResponseVO.setMessage(message);
-//		ResponseVO.setTraceId(getTransferTrace());
-		return ResponseVO;
+		ResponseVO<D> responseVO = new ResponseVO<>();
+		responseVO.setCode(code);
+		responseVO.setMessage(message);
+		responseVO.setTraceId(getTransferTrace());
+		return responseVO;
 	}
 
-//	public static String getTransferTrace() {
-//		Tracer tracer = (Tracer) SpringContextUtils.getBean(Tracer.class);
-//		if (tracer == null) {
-//			return null;
-//		} else {
-//			return tracer.currentSpan() != null && tracer.currentSpan().context() != null
-//					? tracer.currentSpan().context().traceIdString()
-//					: null;
-//		}
-//	}
+	public static String getTransferTrace() {
+		Tracer tracer = SpringUtils.getBean(Tracer.class);
+		if (tracer == null) {
+			return null;
+		} else {
+			return tracer.currentSpan() != null && tracer.currentSpan().context() != null
+					? tracer.currentSpan().context().traceIdString()
+					: null;
+		}
+	}
 
 	public int getCode() {
 		return this.code;
@@ -76,7 +90,7 @@ public class ResponseVO<T> implements Serializable {
 	}
 
 	public boolean isSuccess() {
-		return this.code == 10000;
+		return this.code == SUCCESS;
 	}
 
 	public String getTraceId() {

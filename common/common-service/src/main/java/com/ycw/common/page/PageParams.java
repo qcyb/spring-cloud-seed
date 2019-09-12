@@ -8,24 +8,29 @@ package com.ycw.common.page;
  * @版本 1.00
  *
  * @修改记录
- * <pre>
+ *
+ *       <pre>
  *     版本                       修改人 		修改日期 		 修改内容描述
  *     ----------------------------------------------
  *     1.00 	yuminjun 	2019年9月11日
  *     ----------------------------------------------
- * </pre>
+ *       </pre>
  */
 public class PageParams {
 
 	/**
-	 *页数
+	 * 当前页码
 	 */
 	private int pageNum;
 
 	/**
-	 *页面大小
+	 * 每页条数
 	 */
 	private int pageSize;
+
+	public PageParams() {
+		super();
+	}
 
 	public PageParams(int pageNum, int pageSize) {
 		super();

@@ -1,4 +1,4 @@
-package com.ycw.utils;
+package com.ycw.common.utils;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Map;

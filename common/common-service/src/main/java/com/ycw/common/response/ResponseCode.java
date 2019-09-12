@@ -1,5 +1,20 @@
 package com.ycw.common.response;
 
+/**
+ * @类名称 ResponseCode.java
+ * @类描述 响应码枚举类
+ * @作者 yuminjun yuminjun@lexiangbao.com
+ * @创建时间 2019年9月12日 下午3:44:12
+ * @版本 1.00
+ *
+ * @修改记录
+ * <pre>
+ *     版本                       修改人 		修改日期 		 修改内容描述
+ *     ----------------------------------------------
+ *     1.00 	yuminjun 	2019年9月12日
+ *     ----------------------------------------------
+ * </pre>
+ */
 public enum ResponseCode {
 
 	SUCCESS (200, "SUCCESS", "成功"),
