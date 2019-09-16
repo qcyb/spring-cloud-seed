@@ -6,8 +6,12 @@ import com.github.pagehelper.PageInfo;
 import com.ycw.common.exception.MsgException;
 import com.ycw.common.page.PageParams;
 import com.ycw.common.response.ResponseVO;
-import com.ycw.user.vo.SysUserVO;
-import com.ycw.user.vo.params.SysUserParamsVO;
+import com.ycw.user.vo.SysUserDetailVO;
+import com.ycw.user.vo.SysUserListVO;
+import com.ycw.user.vo.SysUserPageVO;
+import com.ycw.user.vo.param.SysUserListParamVO;
+import com.ycw.user.vo.param.SysUserPageParamVO;
+import com.ycw.user.vo.param.SysUserParamVO;
 
 /**
  * @类名称 SysUserService
@@ -37,20 +41,10 @@ public interface ISysUserService {
 	 * @作者 yuminjun
 	 * @创建时间 2019年9月9日 下午5:49:58
 	 * @param vo         查询参数
-	 * @param pageParams 分页参数
+	 * @param pageParams 分页参数(为null时查询所有)
 	 * @return
 	 */
-	ResponseVO<PageInfo<SysUserParamsVO>> querySysUserPage(SysUserParamsVO vo, PageParams pageParams);
-
-	/**
-	 * @方法名称 querySysUserList
-	 * @功能描述 【系统用户表】列表查询
-	 * @作者 yuminjun
-	 * @创建时间 2019年9月12日 下午12:24:17
-	 * @param vo 查询参数
-	 * @return
-	 */
-	ResponseVO<List<SysUserParamsVO>> querySysUserList(SysUserParamsVO vo);
+	ResponseVO<PageInfo<SysUserListVO>> querySysUserList(SysUserListParamVO vo, PageParams pageParams);
 
 	/**
 	 * @方法名称 getSysUser
@@ -61,6 +55,36 @@ public interface ISysUserService {
 	 * @return
 	 * @throws MsgException
 	 */
-	ResponseVO<SysUserVO> getSysUser(Long id);
+	ResponseVO<SysUserDetailVO> getSysUser(Long id);
+
+	/**
+	 * @方法名称 saveSysUser
+	 * @功能描述 保存【系统用户表】数据
+	 * @作者 yuminjun
+	 * @创建时间 2019年9月16日 上午10:25:18
+	 * @param vo
+	 * @return
+	 */
+	ResponseVO<Long> saveSysUser(SysUserParamVO vo);
+
+	/**
+	 * @方法名称 updateSysUser
+	 * @功能描述 修改【系统用户表】数据
+	 * @作者 yuminjun
+	 * @创建时间 2019年9月16日 上午10:35:08
+	 * @param vo
+	 * @return
+	 */
+	ResponseVO<Long> updateSysUser(SysUserParamVO vo);
+
+	/**
+	 * @方法名称 deleteSysUser
+	 * @功能描述 删除【系统用户表】数据
+	 * @作者 yuminjun
+	 * @创建时间 2019年9月16日 上午10:53:11
+	 * @param id
+	 * @return
+	 */
+	ResponseVO<String> deleteSysUser(Long id);
 
 }

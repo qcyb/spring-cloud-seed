@@ -1,33 +1,25 @@
-package com.ycw.user.entity;
+package com.ycw.user.vo.param;
 
 import java.time.LocalDateTime;
 
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.ycw.common.base.BaseEntity;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.ycw.common.base.BaseVO;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-/**
- * @类名称 SysUser
- * @类描述 <pre>【系统用户表】实体类</pre>
- * @作者 yuminjun
- * @创建时间 2019年08月28日
- * @版本 v1.00
- * @修改记录 <pre>
- * 版本     		修改人 	修改时间    	 	修改内容	描述
- * ----------------------------------------------
- * 1.00 	yuminjun     	2019年08月28日 	新建
- * ----------------------------------------------
- * </pre>
- */
 @Data
 @EqualsAndHashCode(callSuper = true)
-@TableName("sys_user")
-public class SysUserEntity extends BaseEntity {
+public class SysUserParamVO extends BaseVO{
 
 	private static final long serialVersionUID = 1L;
+
+	/**
+ 	 *主键
+ 	 */
+	private Long id;
 
  	/**
  	 *用户编号
@@ -72,6 +64,7 @@ public class SysUserEntity extends BaseEntity {
  	/**
  	 *生日
  	 */
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDateTime birthday;
 
  	/**
@@ -108,15 +101,36 @@ public class SysUserEntity extends BaseEntity {
  	 *状态：0-失效；1-生效
  	 */
 	private Integer status;
+ 	/**
+ 	 *删除标识：0-未删除；1-删除
+ 	 */
+	private Integer delInd;
 
  	/**
- 	 *登录状态
+ 	 *创建人
  	 */
-	private Integer loginStatus;
+	private String createUser;
 
  	/**
- 	 *最后登录时间
+ 	 *创建时间
  	 */
-	private LocalDateTime lastLoginTime;
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	private LocalDateTime createTime;
+
+ 	/**
+ 	 *更新人
+ 	 */
+	private String updateUser;
+
+ 	/**
+ 	 *更新时间
+ 	 */
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	private LocalDateTime updateTime;
+
+ 	/**
+ 	 *版本号
+ 	 */
+	private Integer version;
 
 }

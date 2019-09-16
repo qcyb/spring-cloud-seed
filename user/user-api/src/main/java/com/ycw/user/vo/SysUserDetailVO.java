@@ -1,6 +1,5 @@
 package com.ycw.user.vo;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -8,31 +7,17 @@ import com.ycw.common.base.BaseVO;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.experimental.Accessors;
 
-/**
- * @类名称 SysUserListVO
- * @类描述 <pre>【系统用户表】ListVO</pre>
- * @作者 yuminjun
- * @创建时间 2019年08月28日
- * @版本 v1.00
- * @修改记录 <pre>
- * 版本     		修改人 	修改时间    	 	修改内容	描述
- * ----------------------------------------------
- * 1.00 	yuminjun     	2019年08月28日 	新建
- * ----------------------------------------------
- * </pre>
- */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class SysUserItemVO extends BaseVO{
+public class SysUserDetailVO extends BaseVO{
 
 	private static final long serialVersionUID = 1L;
 
- 	/**
+	/**
  	 *主键
  	 */
-	private Integer id;
+	private Long id;
 
  	/**
  	 *用户编号
@@ -77,6 +62,7 @@ public class SysUserItemVO extends BaseVO{
  	/**
  	 *生日
  	 */
+	@JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
 	private LocalDateTime birthday;
 
  	/**

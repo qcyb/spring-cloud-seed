@@ -28,9 +28,8 @@ public class PageParams {
 	 */
 	private int pageSize;
 
-	public PageParams() {
-		super();
-	}
+	@SuppressWarnings("unused")
+	private PageParams() {}
 
 	public PageParams(int pageNum, int pageSize) {
 		super();

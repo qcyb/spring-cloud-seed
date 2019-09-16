@@ -1,5 +1,6 @@
 package com.ycw.common.interceptor.web;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.core.MethodParameter;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.support.WebDataBinderFactory;
@@ -7,7 +8,6 @@ import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.ModelAndViewContainer;
 
-import com.alibaba.druid.util.StringUtils;
 import com.ycw.common.page.PageParams;
 
 /**
@@ -39,8 +39,10 @@ public class PageParamsMethodArgumentResolver implements HandlerMethodArgumentRe
 			NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
 		String pageNum = webRequest.getParameter("pageNum");
 		String pageSize = webRequest.getParameter("pageSize");
-		PageParams pageParams = new PageParams(StringUtils.stringToInteger(pageNum),
-				StringUtils.stringToInteger(pageSize));
+		PageParams pageParams = null;
+		if(StringUtils.isNotBlank(pageNum) && StringUtils.isNotBlank(pageSize)) {
+			pageParams = new PageParams(Integer.valueOf(pageNum), Integer.valueOf(pageSize));
+		}
 		return pageParams;
 	}
 

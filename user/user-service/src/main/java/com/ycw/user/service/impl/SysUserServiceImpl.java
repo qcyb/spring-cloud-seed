@@ -4,18 +4,19 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.ycw.common.exception.MsgException;
 import com.ycw.common.page.PageParams;
 import com.ycw.common.response.ResponseVO;
 import com.ycw.common.utils.BeanHandleUtils;
 import com.ycw.user.entity.SysUserEntity;
 import com.ycw.user.mapper.ISysUserMapper;
 import com.ycw.user.service.ISysUserService;
-import com.ycw.user.vo.SysUserVO;
-import com.ycw.user.vo.params.SysUserParamsVO;
+import com.ycw.user.vo.SysUserDetailVO;
+import com.ycw.user.vo.SysUserListVO;
+import com.ycw.user.vo.param.SysUserListParamVO;
+import com.ycw.user.vo.param.SysUserParamVO;
 
 /**
  * @类名称 SysUserServiceImpl
@@ -39,22 +40,36 @@ public class SysUserServiceImpl implements ISysUserService {
 	private ISysUserMapper sysUserMapper;
 
 	@Override
-	public ResponseVO<PageInfo<SysUserParamsVO>> querySysUserPage(SysUserParamsVO vo, PageParams pageParams) {
-		List<SysUserParamsVO> list = sysUserMapper.querySysUserList(vo);
+	public ResponseVO<PageInfo<SysUserListVO>> querySysUserList(SysUserListParamVO vo, PageParams pageParams) {
+		List<SysUserListVO> list = sysUserMapper.querySysUserList(vo);
 		return ResponseVO.success(new PageInfo<>(list));
 	}
 
 	@Override
-	public ResponseVO<List<SysUserParamsVO>> querySysUserList(SysUserParamsVO vo) {
-		List<SysUserParamsVO> list = sysUserMapper.querySysUserList(vo);
-		return ResponseVO.success(list);
+	public ResponseVO<SysUserDetailVO> getSysUser(Long id) {
+		SysUserEntity sysUser = sysUserMapper.selectById(id);
+		SysUserDetailVO vo = BeanHandleUtils.beanCopy(sysUser, SysUserDetailVO.class);
+		return ResponseVO.success(vo);
 	}
 
 	@Override
-	public ResponseVO<SysUserVO> getSysUser(Long id) {
-		SysUserEntity sysUser = sysUserMapper.selectById(id);
-		SysUserVO vo = BeanHandleUtils.beanCopy(sysUser, SysUserVO.class);
-		return ResponseVO.success(vo);
+	public ResponseVO<Long> saveSysUser(SysUserParamVO vo) {
+		SysUserEntity sysUser = BeanHandleUtils.beanCopy(vo, SysUserEntity.class);
+		sysUserMapper.insert(sysUser);
+		return ResponseVO.success(sysUser.getId(), "新增成功");
+	}
+
+	@Override
+	public ResponseVO<Long> updateSysUser(SysUserParamVO vo) {
+		SysUserEntity sysUser = BeanHandleUtils.beanCopy(vo, SysUserEntity.class);
+		sysUserMapper.updateById(sysUser);
+		return ResponseVO.success(sysUser.getId(), "修改成功");
+	}
+
+	@Override
+	public ResponseVO<String> deleteSysUser(Long id) {
+		sysUserMapper.deleteById(id);
+		return ResponseVO.success(null, "删除成功");
 	}
 
 }

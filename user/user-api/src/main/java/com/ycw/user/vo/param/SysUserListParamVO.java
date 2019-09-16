@@ -1,4 +1,4 @@
-package com.ycw.user.vo.params;
+package com.ycw.user.vo.param;
 
 import com.ycw.common.base.BaseVO;
 
@@ -7,14 +7,14 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class SysUserParamsVO extends BaseVO{
+public class SysUserListParamVO extends BaseVO{
 
 	private static final long serialVersionUID = 1L;
 
 	/**
  	 *主键
  	 */
-	private Integer id;
+	private Long id;
 
  	/**
  	 *用户编号

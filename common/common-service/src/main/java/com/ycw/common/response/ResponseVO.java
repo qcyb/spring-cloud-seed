@@ -26,10 +26,10 @@ public class ResponseVO<T> implements Serializable {
 	}
 
 	public static <D> ResponseVO<D> success(D data) {
-		return success((String) null, data);
+		return success(data, (String) null);
 	}
 
-	public static <D> ResponseVO<D> success(String message, D data) {
+	public static <D> ResponseVO<D> success(D data, String message) {
 		ResponseVO<D> responseVO = new ResponseVO<>();
 		responseVO.setCode(SUCCESS);
 		responseVO.setMessage(message);
@@ -47,7 +47,7 @@ public class ResponseVO<T> implements Serializable {
 	}
 
 	public static String getTransferTrace() {
-		Tracer tracer = SpringUtils.getBean(Tracer.class);
+		Tracer tracer = (Tracer) SpringUtils.getBean("tracer");
 		if (tracer == null) {
 			return null;
 		} else {

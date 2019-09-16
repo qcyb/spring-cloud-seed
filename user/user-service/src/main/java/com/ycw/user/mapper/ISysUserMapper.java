@@ -32,7 +32,7 @@ public interface ISysUserMapper extends BaseCrudMapper<SysUserEntity> {
 	 * @param <T> VO参数对象
 	 * @return
 	 */
-	<T> List<T> querySysUserList(T t);
+	<E, T> List<E> querySysUserList(T t);
 
 }
 

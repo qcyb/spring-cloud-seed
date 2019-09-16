@@ -10,14 +10,14 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class SysUserVO extends BaseVO{
+public class SysUserListVO extends BaseVO{
 
 	private static final long serialVersionUID = 1L;
 
 	/**
  	 *主键
  	 */
-	private Integer id;
+	private Long id;
 
  	/**
  	 *用户编号
@@ -62,6 +62,7 @@ public class SysUserVO extends BaseVO{
  	/**
  	 *生日
  	 */
+	@JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
 	private LocalDateTime birthday;
 
  	/**
