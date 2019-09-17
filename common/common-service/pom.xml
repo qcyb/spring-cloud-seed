@@ -30,11 +30,11 @@
 		<exclusions>
 			<exclusion>
 				<groupId>org.mybatis</groupId>
-     				<artifactId>mybatis</artifactId>
+     			<artifactId>mybatis</artifactId>
 			</exclusion>
 			<exclusion>
 		    	<groupId>org.mybatis</groupId>
-     				<artifactId>mybatis-spring</artifactId>
+     			<artifactId>mybatis-spring</artifactId>
 			</exclusion>
 		</exclusions>
 	</dependency>

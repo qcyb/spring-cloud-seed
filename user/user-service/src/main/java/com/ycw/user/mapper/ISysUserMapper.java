@@ -25,7 +25,7 @@ public interface ISysUserMapper extends BaseCrudMapper<SysUserEntity> {
 
 	/**
 	 * @方法名称 querySysUserPage
-	 * @功能描述 <pre>【系统用户表】分页查询</pre>
+	 * @功能描述 <pre>【系统用户表】列表查询</pre>
 	 * @作者    yuminjun
 	 * @创建时间 2019/08/28 14:17
 	 * @param params 查询参数<br>

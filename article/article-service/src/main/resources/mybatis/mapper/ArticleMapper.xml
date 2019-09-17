@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ycw.article.mapper.ArticleMapper">
+
+    <sql id="column_list">
+        t.id id, <!-- 主键 -->
+        t.title title, <!-- 标题 -->
+        t.introduction introduction, <!-- 简介 -->
+        t.article_type articleType, <!-- 分类 -->
+        t.author author, <!-- 作者 -->
+        t.publish_time publishTime, <!-- 发布时间 -->
+        t.content content, <!-- 内容 -->
+        t.is_show isShow, <!-- 是否展示 -->
+        t.read_count readCount, <!-- 阅读数 -->
+        t.like_count likeCount, <!-- 喜欢数 -->
+        t.unlike_count unlikeCount, <!-- 不喜欢数 -->
+        t.del_ind delInd, <!-- 删除标识：0-未删除；1-删除 -->
+        t.create_user createUser, <!-- 创建人 -->
+        t.create_time createTime, <!-- 创建时间 -->
+        t.update_user updateUser, <!-- 更新人 -->
+        t.update_time updateTime, <!-- 更新时间 -->
+        t.version version, <!-- 版本号 -->
+        t.is_deleted isDeleted <!-- 删除标志：0-未删除，1-已删除 -->
+	</sql>
+
+    <sql id="where_filters">
+        <where>
+    		AND t.is_deleted = '0'
+			<if test="params.id != null">
+				AND t.id = #{params.id}
+			</if>
+			<if test="params.title != null and params.title != ''">
+				AND t.title = #{params.title}
+			</if>
+			<if test="params.introduction != null and params.introduction != ''">
+				AND t.introduction = #{params.introduction}
+			</if>
+			<if test="params.articleType != null and params.articleType != ''">
+				AND t.article_type = #{params.articleType}
+			</if>
+			<if test="params.author != null and params.author != ''">
+				AND t.author = #{params.author}
+			</if>
+			<if test="params.publishTime != null">
+				AND t.publish_time = #{params.publishTime}
+			</if>
+			<if test="params.content != null and params.content != ''">
+				AND t.content = #{params.content}
+			</if>
+			<if test="params.isShow != null">
+				AND t.is_show = #{params.isShow}
+			</if>
+			<if test="params.readCount != null">
+				AND t.read_count = #{params.readCount}
+			</if>
+			<if test="params.likeCount != null">
+				AND t.like_count = #{params.likeCount}
+			</if>
+			<if test="params.unlikeCount != null">
+				AND t.unlike_count = #{params.unlikeCount}
+			</if>
+			<if test="params.delInd != null">
+				AND t.del_ind = #{params.delInd}
+			</if>
+			<if test="params.createUser != null and params.createUser != ''">
+				AND t.create_user = #{params.createUser}
+			</if>
+			<if test="params.createTime != null">
+				AND t.create_time = #{params.createTime}
+			</if>
+			<if test="params.updateUser != null and params.updateUser != ''">
+				AND t.update_user = #{params.updateUser}
+			</if>
+			<if test="params.updateTime != null">
+				AND t.update_time = #{params.updateTime}
+			</if>
+			<if test="params.version != null">
+				AND t.version = #{params.version}
+			</if>
+        </where>
+        ORDER BY t.create_time DESC
+    </sql>
+
+    <!--根据条件查询列表-->
+    <select id="queryArticlePage" parameterType="com.ycw.article.vo.param.ArticleListParamVO" resultType="com.ycw.article.vo.ArticleListVO">
+        SELECT
+		<include refid="column_list"/>
+        FROM article t
+        <include refid="where_filters"/>
+    </select>
+
+</mapper>
