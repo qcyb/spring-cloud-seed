@@ -1,6 +1,7 @@
 package com.ycw.user.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.github.pagehelper.PageInfo;
 import com.ycw.article.vo.ArticleListVO;
-import com.ycw.article.vo.param.ArticleListParamVO;
+import com.ycw.article.vo.param.UserArticleListParamVO;
 import com.ycw.common.base.BaseController;
 import com.ycw.common.page.PageParams;
 import com.ycw.common.response.ResponseVO;
@@ -78,7 +79,7 @@ public class SysUserController extends BaseController {
 	 * @return
 	 */
 	@PostMapping("/user")
-	public ResponseVO<Long> saveOrUpdateSysUser(SysUserParamVO vo) {
+	public ResponseVO<Long> saveOrUpdateSysUser(@Validated SysUserParamVO vo) {
 		Long id = vo.getId();
 		if (null == id) {
 			return sysUserService.saveSysUser(vo);
@@ -110,7 +111,7 @@ public class SysUserController extends BaseController {
 	 * @return
 	 */
 	@GetMapping("/user/article/list")
-	public ResponseVO<PageInfo<ArticleListVO>> queryUserArticleList(ArticleListParamVO vo, PageParams pageParams) {
+	public ResponseVO<PageInfo<ArticleListVO>> queryUserArticleList(UserArticleListParamVO vo, PageParams pageParams) {
 		return sysUserService.queryUserArticleList(vo, pageParams);
 	}
 }

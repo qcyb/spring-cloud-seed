@@ -9,7 +9,7 @@ import com.github.pagehelper.PageInfo;
 import com.ycw.article.mapper.ArticleMapper;
 import com.ycw.article.service.ArticleService;
 import com.ycw.article.vo.ArticleListVO;
-import com.ycw.article.vo.param.ArticleListParamVO;
+import com.ycw.article.vo.param.UserArticleListParamVO;
 import com.ycw.common.page.PageParams;
 import com.ycw.common.response.ResponseVO;
 
@@ -41,7 +41,7 @@ public class ArticleServiceImpl implements ArticleService{
 	 * @return
 	 */
 	@Override
-	public ResponseVO<PageInfo<ArticleListVO>> queryArticleList(ArticleListParamVO vo, PageParams pageParams) {
+	public ResponseVO<PageInfo<ArticleListVO>> queryUserArticleList(UserArticleListParamVO vo, PageParams pageParams) {
 		List<ArticleListVO> list = articleMapper.queryArticleList(vo);
 		return ResponseVO.success(new PageInfo<>(list));
 	}

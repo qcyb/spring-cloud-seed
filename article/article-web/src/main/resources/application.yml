@@ -98,6 +98,16 @@ feign:
   # 使用 ApacheHttpClient
   httpclient:
     enabled: true 
+    
+# Hystrix配置信息
+hystrix:
+  command:
+    # 默认超时时间,建议"Hystrix超时 > Ribbon超时",否则将可能导致重试特性失效
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 31000
 
 management:
   endpoints:

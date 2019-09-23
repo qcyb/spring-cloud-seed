@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageInfo;
 import com.ycw.article.vo.ArticleListVO;
-import com.ycw.article.vo.param.ArticleListParamVO;
+import com.ycw.article.vo.param.UserArticleListParamVO;
 import com.ycw.common.page.PageParams;
 import com.ycw.common.response.ResponseVO;
 import com.ycw.common.utils.BeanHandleUtils;
@@ -78,8 +78,8 @@ public class SysUserServiceImpl implements ISysUserService {
 	}
 
 	@Override
-	public ResponseVO<PageInfo<ArticleListVO>> queryUserArticleList(ArticleListParamVO vo, PageParams pageParams) {
-		ResponseVO<PageInfo<ArticleListVO>> result = articleClient.queryArticleList(vo, pageParams);
+	public ResponseVO<PageInfo<ArticleListVO>> queryUserArticleList(UserArticleListParamVO vo, PageParams pageParams) {
+		ResponseVO<PageInfo<ArticleListVO>> result = articleClient.queryUserArticleList(vo, pageParams);
 		return result;
 	}
 }

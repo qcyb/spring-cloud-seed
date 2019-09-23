@@ -2,7 +2,7 @@ package com.ycw.user.service;
 
 import com.github.pagehelper.PageInfo;
 import com.ycw.article.vo.ArticleListVO;
-import com.ycw.article.vo.param.ArticleListParamVO;
+import com.ycw.article.vo.param.UserArticleListParamVO;
 import com.ycw.common.exception.MsgException;
 import com.ycw.common.page.PageParams;
 import com.ycw.common.response.ResponseVO;
@@ -94,6 +94,6 @@ public interface ISysUserService {
 	 * @param pageParams
 	 * @return
 	 */
-	ResponseVO<PageInfo<ArticleListVO>> queryUserArticleList(ArticleListParamVO vo, PageParams pageParams);
+	ResponseVO<PageInfo<ArticleListVO>> queryUserArticleList(UserArticleListParamVO vo, PageParams pageParams);
 
 }
