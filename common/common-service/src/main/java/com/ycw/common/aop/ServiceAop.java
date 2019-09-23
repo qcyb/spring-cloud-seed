@@ -19,11 +19,11 @@ public class ServiceAop {
 
 	@Around(value = "queryMenthodPoint()")
 	public Object process(ProceedingJoinPoint point) throws Throwable {
-		// 访问目标方法的参数
+		/* 访问目标方法的参数 */
 		Object[] args = point.getArgs();
 		if (args != null && args.length > 0) {
 			for (int i = args.length - 1; i >= 0; i--) {
-				// 设置分页参数
+				/* 设置分页参数 */
 				if (args[i] instanceof PageParams) {
 					PageParams pageParams = (PageParams) args[i];
 					PageHelper.startPage(pageParams.getPageNum(), pageParams.getPageSize());

@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.github.pagehelper.PageInfo;
+import com.ycw.article.vo.ArticleListVO;
+import com.ycw.article.vo.param.ArticleListParamVO;
 import com.ycw.common.base.BaseController;
 import com.ycw.common.page.PageParams;
 import com.ycw.common.response.ResponseVO;
@@ -96,5 +98,19 @@ public class SysUserController extends BaseController {
 	@DeleteMapping("/user")
 	public ResponseVO<String> deleteSysUser(Long id) {
 		return sysUserService.deleteSysUser(id);
+	}
+
+	/**
+	 * @方法名称 queryUserArticleList
+	 * @功能描述 查询用户文章列表
+	 * @作者     yuminjun
+	 * @创建时间 2019年9月18日 上午10:15:25
+	 * @param vo
+	 * @param pageParams
+	 * @return
+	 */
+	@GetMapping("/user/article/list")
+	public ResponseVO<PageInfo<ArticleListVO>> queryUserArticleList(ArticleListParamVO vo, PageParams pageParams) {
+		return sysUserService.queryUserArticleList(vo, pageParams);
 	}
 }

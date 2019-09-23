@@ -1,5 +1,8 @@
 package com.ycw.common.page;
 
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
 /**
  * @类名称 PageParams.java
  * @类描述 分页参数
@@ -16,6 +19,7 @@ package com.ycw.common.page;
  *     ----------------------------------------------
  *       </pre>
  */
+@ToString
 public class PageParams {
 
 	/**

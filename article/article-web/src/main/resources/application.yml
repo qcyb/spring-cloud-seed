@@ -1,6 +1,6 @@
 server:
   # HTTP端口
-  port: 8080
+  port: 8081
 spring:
   # 解决 多个接口上的@FeignClient("相同服务名")会报错,overriding is disabled
   main:
@@ -94,7 +94,7 @@ feign:
         loggerLevel: full
   # 开启熔断
   hystrix:
-    enabled: false
+    enabled: true
   # 使用 ApacheHttpClient
   httpclient:
     enabled: true 
@@ -112,4 +112,4 @@ management:
       
 logging:
   level:
-    com.ycw.user.client: debug
+    com.ycw: debug

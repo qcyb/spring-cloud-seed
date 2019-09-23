@@ -1,5 +1,7 @@
 package com.ycw.common.interceptor.web;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.core.MethodParameter;
 import org.springframework.stereotype.Component;
@@ -37,12 +39,20 @@ public class PageParamsMethodArgumentResolver implements HandlerMethodArgumentRe
 	@Override
 	public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer,
 			NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
+		/* json类型的请求不处理 */
+		HttpServletRequest request = webRequest.getNativeRequest(HttpServletRequest.class);
+		if (request.getContentType() != null && request.getContentType().contains("application/json")) {
+			return null;
+		}
+
+		/* 组装分页参数 */
 		String pageNum = webRequest.getParameter("pageNum");
 		String pageSize = webRequest.getParameter("pageSize");
 		PageParams pageParams = null;
 		if(StringUtils.isNotBlank(pageNum) && StringUtils.isNotBlank(pageSize)) {
 			pageParams = new PageParams(Integer.valueOf(pageNum), Integer.valueOf(pageSize));
 		}
+
 		return pageParams;
 	}
 

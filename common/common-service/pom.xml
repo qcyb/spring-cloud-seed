@@ -7,8 +7,8 @@
     <artifactId>common</artifactId>
     <version>1.0.0-SNAPSHOT</version>
   </parent>
-  <artifactId>common-service</artifactId>
-  <name>common-service</name>
+  <artifactId>ycw-common</artifactId>
+  <name>ycw-common</name>
   <url>http://maven.apache.org</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -22,6 +22,11 @@
 		<groupId>commons-beanutils</groupId>
 		<artifactId>commons-beanutils</artifactId>
 		<version>1.9.3</version>
+	</dependency>
+	<dependency>
+		<groupId>org.projectlombok</groupId>
+		<artifactId>lombok</artifactId>
+		<scope>provided</scope>
 	</dependency>
 	<dependency>
 		<groupId>com.github.pagehelper</groupId>

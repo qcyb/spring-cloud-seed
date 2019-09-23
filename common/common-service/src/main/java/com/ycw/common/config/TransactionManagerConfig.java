@@ -52,7 +52,7 @@ public class TransactionManagerConfig {
     public TransactionInterceptor txAdvice(){
         NameMatchTransactionAttributeSource source = new NameMatchTransactionAttributeSource();
 
-        /** 只读事务，不做更新操作 */
+        /* 只读事务，不做更新操作 */
         RuleBasedTransactionAttribute readOnlyTx = new RuleBasedTransactionAttribute();
         readOnlyTx.setReadOnly(true);
         readOnlyTx.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
@@ -63,7 +63,7 @@ public class TransactionManagerConfig {
         requiredTx.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
         requiredTx.setTimeout(AOP_TIME_OUT);
 
-        /** 独立事务, 每次新建一个事务 */
+        /* 独立事务, 每次新建一个事务 */
         RuleBasedTransactionAttribute requiredNewTx = new RuleBasedTransactionAttribute();
         requiredNewTx.setRollbackRules(Collections.singletonList(new RollbackRuleAttribute(Exception.class)));
         requiredNewTx.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
@@ -71,7 +71,7 @@ public class TransactionManagerConfig {
 
         Map<String, TransactionAttribute> methodMap = new HashMap<>();
 
-        /** 可以提及事务或回滚事务的方法 */
+        /* 可以提及事务或回滚事务的方法 */
         methodMap.put("add*", requiredTx);
         methodMap.put("save*", requiredTx);
         methodMap.put("update*", requiredTx);
@@ -83,10 +83,10 @@ public class TransactionManagerConfig {
         methodMap.put("repair*", requiredTx);
         methodMap.put("binding*", requiredTx);
 
-        /** 独立事务 */
+        /* 独立事务 */
         methodMap.put("*NewTrans", requiredNewTx);
 
-        /** 其他方法无事务，只读 */
+        /* 其他方法无事务，只读 */
         methodMap.put("*", readOnlyTx);
 
         source.setNameMap(methodMap);

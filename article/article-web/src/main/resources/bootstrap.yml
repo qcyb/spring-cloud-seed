@@ -1,7 +1,7 @@
 spring:
   application:
     # 应用名称
-    name: blog-user
+    name: blog-article
   # 引用环境配置,多个间用逗号分隔
   profiles:
     active: dev

@@ -8,8 +8,6 @@
   <artifactId>common</artifactId>
   <packaging>pom</packaging>
   <modules>
-  	<module>common-service</module>
-  	<module>common-api</module>
-  	<module>common-web</module>
+  	<module>ycw-common</module>
   </modules>
 </project>

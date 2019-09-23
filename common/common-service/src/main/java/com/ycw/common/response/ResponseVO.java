@@ -5,20 +5,22 @@ import java.io.Serializable;
 import com.ycw.common.utils.SpringUtils;
 
 import brave.Tracer;
+import lombok.ToString;
 
+@ToString
 public class ResponseVO<T> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	public static final int SUCCESS = 200;
 
-	private int code;
+	private Integer code;
 
 	private String message;
 
 	private T data;
 
-	private long timestamp = System.currentTimeMillis();
+	private Long timestamp = System.currentTimeMillis();
 
 	private String traceId;
 

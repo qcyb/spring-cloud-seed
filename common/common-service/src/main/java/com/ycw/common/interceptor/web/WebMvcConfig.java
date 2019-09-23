@@ -31,7 +31,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
 	@Override
 	public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
-		argumentResolvers.add(pageParamsMethodArgumentResolver);
+		argumentResolvers.add(pageParamsMethodArgumentResolver);// 分页参数处理
 	}
 
 }

@@ -43,91 +43,91 @@ public class GlobalExceptionHandler {
 		return responseFormat(ex.getCode(), ex);
 	}
 
-	// 运行时异常
+	/* 运行时异常 */
 	@ExceptionHandler(RuntimeException.class)
 	public ResponseVO<Object> runtimeExceptionHandler(RuntimeException ex) {
 		return responseFormat(99999, ex);
 	}
 
-	// 空指针异常
+	/* 空指针异常 */
 	@ExceptionHandler(NullPointerException.class)
 	public ResponseVO<Object> nullPointerExceptionHandler(NullPointerException ex) {
 		return responseFormat(99999, ex);
 	}
 
-	// 类型转换异常
+	/* 类型转换异常 */
 	@ExceptionHandler(ClassCastException.class)
 	public ResponseVO<Object> classCastExceptionHandler(ClassCastException ex) {
 		return responseFormat(99999, ex);
 	}
 
-	// IO异常
+	/* IO异常 */
 	@ExceptionHandler(IOException.class)
 	public ResponseVO<Object> iOExceptionHandler(IOException ex) {
 		return responseFormat(99999, ex);
 	}
 
-	// 未知方法异常
+	/* 未知方法异常 */
 	@ExceptionHandler(NoSuchMethodException.class)
 	public ResponseVO<Object> noSuchMethodExceptionHandler(NoSuchMethodException ex) {
 		return responseFormat(99999, ex);
 	}
 
-	// 数组越界异常
+	/* 数组越界异常 */
 	@ExceptionHandler(IndexOutOfBoundsException.class)
 	public ResponseVO<Object> indexOutOfBoundsExceptionHandler(IndexOutOfBoundsException ex) {
 		return responseFormat(99999, ex);
 	}
 
-	// 400错误
+	/* 400错误 */
 	@ExceptionHandler({ HttpMessageNotReadableException.class })
 	public ResponseVO<Object> requestNotReadable(HttpMessageNotReadableException ex) {
 		return responseFormat(99999, ex);
 	}
 
-	// 400错误
+	/* 400错误 */
 	@ExceptionHandler({ TypeMismatchException.class })
 	public ResponseVO<Object> requestTypeMismatch(TypeMismatchException ex) {
 		return responseFormat(99999, ex);
 	}
 
-	// 400错误
+	/* 400错误 */
 	@ExceptionHandler({ MissingServletRequestParameterException.class })
 	public ResponseVO<Object> requestMissingServletRequest(MissingServletRequestParameterException ex) {
 		return responseFormat(99999, ex);
 	}
 
-	// 405错误
+	/* 405错误 */
 	@ExceptionHandler({ HttpRequestMethodNotSupportedException.class })
 	public ResponseVO<Object> request405(HttpRequestMethodNotSupportedException ex) {
 		return responseFormat(99999, ex);
 	}
 
-	// 406错误
+	/* 406错误 */
 	@ExceptionHandler({ HttpMediaTypeNotAcceptableException.class })
 	public ResponseVO<Object> request406(HttpMediaTypeNotAcceptableException ex) {
 		return responseFormat(99999, ex);
 	}
 
-	// 500错误
+	/* 500错误 */
 	@ExceptionHandler({ ConversionNotSupportedException.class, HttpMessageNotWritableException.class })
 	public ResponseVO<Object> server500(RuntimeException ex) {
 		return responseFormat(99999, ex);
 	}
 
-	// 栈溢出
+	/* 栈溢出 */
 	@ExceptionHandler({ StackOverflowError.class })
 	public ResponseVO<Object> requestStackOverflow(StackOverflowError ex) {
 		return responseFormat(99999, ex);
 	}
 
-	// 除数不能为0
+	/* 除数不能为0 */
 	@ExceptionHandler({ ArithmeticException.class })
 	public ResponseVO<Object> arithmeticException(ArithmeticException ex) {
 		return responseFormat(99999, ex);
 	}
 
-	// 其他异常
+	/* 其他异常 */
 	@ExceptionHandler({ Exception.class })
 	public ResponseVO<Object> exception(Exception ex) {
 		return responseFormat(99999, ex);

@@ -22,7 +22,7 @@ import lombok.EqualsAndHashCode;
  * </pre>
  */
 @Data
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
 public class ArticleListParamVO extends BaseVO{
 
 	private static final long serialVersionUID = 1L;

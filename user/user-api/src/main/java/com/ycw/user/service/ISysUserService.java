@@ -1,16 +1,14 @@
 package com.ycw.user.service;
 
-import java.util.List;
-
 import com.github.pagehelper.PageInfo;
+import com.ycw.article.vo.ArticleListVO;
+import com.ycw.article.vo.param.ArticleListParamVO;
 import com.ycw.common.exception.MsgException;
 import com.ycw.common.page.PageParams;
 import com.ycw.common.response.ResponseVO;
 import com.ycw.user.vo.SysUserDetailVO;
 import com.ycw.user.vo.SysUserListVO;
-import com.ycw.user.vo.SysUserPageVO;
 import com.ycw.user.vo.param.SysUserListParamVO;
-import com.ycw.user.vo.param.SysUserPageParamVO;
 import com.ycw.user.vo.param.SysUserParamVO;
 
 /**
@@ -86,5 +84,16 @@ public interface ISysUserService {
 	 * @return
 	 */
 	ResponseVO<String> deleteSysUser(Long id);
+
+	/**
+	 * @方法名称 queryUserArticleList
+	 * @功能描述 查询用户文章列表
+	 * @作者     yuminjun
+	 * @创建时间 2019年9月18日 上午10:08:57
+	 * @param vo
+	 * @param pageParams
+	 * @return
+	 */
+	ResponseVO<PageInfo<ArticleListVO>> queryUserArticleList(ArticleListParamVO vo, PageParams pageParams);
 
 }

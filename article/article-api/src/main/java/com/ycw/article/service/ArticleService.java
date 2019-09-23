@@ -1,6 +1,7 @@
 package com.ycw.article.service;
 
-import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.github.pagehelper.PageInfo;
 import com.ycw.article.vo.ArticleListVO;
@@ -21,7 +22,6 @@ import com.ycw.common.response.ResponseVO;
  * ----------------------------------------------
  * </pre>
  */
-@FeignClient(value = "article-service")
 public interface ArticleService {
 
 	/**
@@ -32,6 +32,7 @@ public interface ArticleService {
 	 * @param articleQueryParams 查询参数
 	 * @return
 	 */
-	ResponseVO<PageInfo<ArticleListVO>> queryArticleList(ArticleListParamVO vo, PageParams pageParams);
+	@GetMapping(value = "/article/list")
+	ResponseVO<PageInfo<ArticleListVO>> queryArticleList(@RequestParam ArticleListParamVO vo, @RequestParam PageParams pageParams);
 
 }

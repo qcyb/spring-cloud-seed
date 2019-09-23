@@ -19,70 +19,69 @@
         t.create_time createTime, <!-- 创建时间 -->
         t.update_user updateUser, <!-- 更新人 -->
         t.update_time updateTime, <!-- 更新时间 -->
-        t.version version, <!-- 版本号 -->
-        t.is_deleted isDeleted <!-- 删除标志：0-未删除，1-已删除 -->
+        t.version version <!-- 版本号 -->
 	</sql>
 
     <sql id="where_filters">
         <where>
-    		AND t.is_deleted = '0'
-			<if test="params.id != null">
-				AND t.id = #{params.id}
+    		AND t.del_ind = '0'
+			<if test="id != null">
+				AND t.id = #{id}
 			</if>
-			<if test="params.title != null and params.title != ''">
-				AND t.title = #{params.title}
+			<if test="title != null and title != ''">
+				AND t.title = #{title}
 			</if>
-			<if test="params.introduction != null and params.introduction != ''">
-				AND t.introduction = #{params.introduction}
+			<if test="introduction != null and introduction != ''">
+				AND t.introduction = #{introduction}
 			</if>
-			<if test="params.articleType != null and params.articleType != ''">
-				AND t.article_type = #{params.articleType}
+			<if test="articleType != null and articleType != ''">
+				AND t.article_type = #{articleType}
 			</if>
-			<if test="params.author != null and params.author != ''">
-				AND t.author = #{params.author}
+			<if test="author != null and author != ''">
+				AND t.author = #{author}
 			</if>
-			<if test="params.publishTime != null">
-				AND t.publish_time = #{params.publishTime}
+			<if test="publishTime != null">
+				AND t.publish_time = #{publishTime}
 			</if>
-			<if test="params.content != null and params.content != ''">
-				AND t.content = #{params.content}
+			<if test="content != null and content != ''">
+				AND t.content = #{content}
 			</if>
-			<if test="params.isShow != null">
-				AND t.is_show = #{params.isShow}
+			<if test="isShow != null">
+				AND t.is_show = #{isShow}
 			</if>
-			<if test="params.readCount != null">
-				AND t.read_count = #{params.readCount}
+			<if test="readCount != null">
+				AND t.read_count = #{readCount}
 			</if>
-			<if test="params.likeCount != null">
-				AND t.like_count = #{params.likeCount}
+			<if test="likeCount != null">
+				AND t.like_count = #{likeCount}
 			</if>
-			<if test="params.unlikeCount != null">
-				AND t.unlike_count = #{params.unlikeCount}
+			<if test="unlikeCount != null">
+				AND t.unlike_count = #{unlikeCount}
 			</if>
-			<if test="params.delInd != null">
-				AND t.del_ind = #{params.delInd}
+			<if test="delInd != null">
+				AND t.del_ind = #{delInd}
 			</if>
-			<if test="params.createUser != null and params.createUser != ''">
-				AND t.create_user = #{params.createUser}
+			<if test="createUser != null">
+				AND t.create_user = #{createUser}
 			</if>
-			<if test="params.createTime != null">
-				AND t.create_time = #{params.createTime}
+			<if test="createTime != null">
+				AND t.create_time = #{createTime}
 			</if>
-			<if test="params.updateUser != null and params.updateUser != ''">
-				AND t.update_user = #{params.updateUser}
+			<if test="updateUser != null">
+				AND t.update_user = #{updateUser}
 			</if>
-			<if test="params.updateTime != null">
-				AND t.update_time = #{params.updateTime}
+			<if test="updateTime != null">
+				AND t.update_time = #{updateTime}
 			</if>
-			<if test="params.version != null">
-				AND t.version = #{params.version}
+			<if test="version != null">
+				AND t.version = #{version}
 			</if>
         </where>
         ORDER BY t.create_time DESC
     </sql>
 
     <!--根据条件查询列表-->
-    <select id="queryArticlePage" parameterType="com.ycw.article.vo.param.ArticleListParamVO" resultType="com.ycw.article.vo.ArticleListVO">
+    <select id="queryArticleList" parameterType="map" resultType="map">
         SELECT
 		<include refid="column_list"/>
         FROM article t

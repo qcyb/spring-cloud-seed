@@ -32,16 +32,13 @@ public class MapperAop {
 	 */
 	@Around(value = "queryMenthodPoint() || getMenthodPoint()")
 	public Object process(ProceedingJoinPoint point) throws Throwable {
-		// 访问目标方法的参数：
 		Object[] args = point.getArgs();
 		if (args != null && args.length > 0 && args[0] instanceof BaseVO) {
 			// 将VO对象转换成Map对象
 			args[0] = BeanHandleUtils.beanToMap(args[0]);
 		}
-
 		// 用改变后的参数执行目标方法
 		Object returnValue = point.proceed(args);
-
 		return returnValue;
 	}
 

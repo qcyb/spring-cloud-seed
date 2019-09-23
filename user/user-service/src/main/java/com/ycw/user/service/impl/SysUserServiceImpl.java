@@ -4,12 +4,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.github.pagehelper.PageInfo;
+import com.ycw.article.vo.ArticleListVO;
+import com.ycw.article.vo.param.ArticleListParamVO;
 import com.ycw.common.page.PageParams;
 import com.ycw.common.response.ResponseVO;
 import com.ycw.common.utils.BeanHandleUtils;
+import com.ycw.user.client.ArticleClient;
 import com.ycw.user.entity.SysUserEntity;
 import com.ycw.user.mapper.ISysUserMapper;
 import com.ycw.user.service.ISysUserService;
@@ -38,6 +40,9 @@ public class SysUserServiceImpl implements ISysUserService {
 
 	@Autowired
 	private ISysUserMapper sysUserMapper;
+
+	@Autowired
+	private ArticleClient articleClient;
 
 	@Override
 	public ResponseVO<PageInfo<SysUserListVO>> querySysUserList(SysUserListParamVO vo, PageParams pageParams) {
@@ -72,4 +77,9 @@ public class SysUserServiceImpl implements ISysUserService {
 		return ResponseVO.success(null, "删除成功");
 	}
 
+	@Override
+	public ResponseVO<PageInfo<ArticleListVO>> queryUserArticleList(ArticleListParamVO vo, PageParams pageParams) {
+		ResponseVO<PageInfo<ArticleListVO>> result = articleClient.queryArticleList(vo, pageParams);
+		return result;
+	}
 }

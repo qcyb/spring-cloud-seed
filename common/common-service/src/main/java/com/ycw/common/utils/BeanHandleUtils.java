@@ -7,7 +7,6 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.cglib.beans.BeanMap;
 
 import com.ycw.common.exception.MsgException;
-import com.ycw.common.response.ResponseCode;
 
 public class BeanHandleUtils extends BeanUtils {
 
@@ -23,8 +22,9 @@ public class BeanHandleUtils extends BeanUtils {
 	 * @throws MsgException
 	 */
 	public static <T> T beanCopy(Object source, Class<T> targetClass) {
-		if (null == source)
+		if (null == source) {
 			return null;
+		}
 		T target = null;
 		try {
 			target = targetClass.newInstance();
@@ -46,9 +46,10 @@ public class BeanHandleUtils extends BeanUtils {
 	 * @return
 	 * @throws MsgException
 	 */
-	public static <T> T mapToBean(Map<String, Object> map, Class<T> targetClass) throws MsgException {
-		if (map == null)
+	public static <T> T mapToBean(Map<String, Object> map, Class<T> targetClass) {
+		if (map == null) {
 			return null;
+		}
 		T obj = null;
 		try {
 			obj = targetClass.newInstance();
@@ -68,10 +69,10 @@ public class BeanHandleUtils extends BeanUtils {
 	 * @return
 	 * @return
 	 */
-	@SuppressWarnings("unchecked")
 	public static Map<String, Object> beanToMap(Object source) {
-		if (source == null)
+		if (source == null) {
 			return null;
+		}
 		return BeanMap.create(source);
 	}
 }
