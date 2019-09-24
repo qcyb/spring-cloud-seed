@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.github.pagehelper.PageInfo;
 import com.ycw.article.vo.ArticleListVO;
-import com.ycw.article.vo.param.ArticleListParamVO;
 import com.ycw.article.vo.param.UserArticleListParamVO;
 import com.ycw.common.page.PageParams;
 import com.ycw.common.response.ResponseVO;

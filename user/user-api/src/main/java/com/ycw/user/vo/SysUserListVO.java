@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.ycw.common.base.BaseVO;
+import com.ycw.common.constants.CommonConstants;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -62,7 +63,7 @@ public class SysUserListVO extends BaseVO{
  	/**
  	 *生日
  	 */
-	@JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+	@JsonFormat(pattern = CommonConstants.DATE_FORMAT, timezone = "GMT+8")
 	private LocalDateTime birthday;
 
  	/**
@@ -108,7 +109,7 @@ public class SysUserListVO extends BaseVO{
  	/**
  	 *最后登录时间
  	 */
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+	@JsonFormat(pattern = CommonConstants.DATE_TIME_24HOUR_FORMAT, timezone = "GMT+8")
 	private LocalDateTime lastLoginTime;
 
  	/**
@@ -124,7 +125,7 @@ public class SysUserListVO extends BaseVO{
  	/**
  	 *创建时间
  	 */
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+	@JsonFormat(pattern = CommonConstants.DATE_TIME_24HOUR_FORMAT, timezone = "GMT+8")
 	private LocalDateTime createTime;
 
  	/**
@@ -135,7 +136,7 @@ public class SysUserListVO extends BaseVO{
  	/**
  	 *更新时间
  	 */
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+	@JsonFormat(pattern = CommonConstants.DATE_TIME_24HOUR_FORMAT, timezone = "GMT+8")
 	private LocalDateTime updateTime;
 
  	/**
