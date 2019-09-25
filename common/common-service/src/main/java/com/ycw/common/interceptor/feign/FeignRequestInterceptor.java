@@ -10,10 +10,12 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.http.protocol.HTTP;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ycw.common.constants.CommonConstants;
 
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
@@ -58,9 +60,10 @@ public class FeignRequestInterceptor implements RequestInterceptor {
 				continue;
 			}
 			try {
-				paramsStr = URLDecoder.decode(paramsStr, "utf-8");
+				paramsStr = URLDecoder.decode(paramsStr, CommonConstants.DEFAULT_CHARSET_UTF_8);
 			} catch (UnsupportedEncodingException e) {
-				log.error("\n参数feign请求参数decode失败");
+				log.error("\nfeign请求参数[" + paramsStr + "]decode失败", e);
+				continue;
 			}
 			// 特殊空格trim方法不能处理，此处采用replace方法去除空格
 			String[] paramsArray = StringUtils.split(paramsStr.replaceAll(" ",""), ",");

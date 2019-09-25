@@ -7,6 +7,8 @@ public final class CommonConstants {
 	public static final int INT_ON = 1;
 	public static final int INT_OFF = 0;
 
+	public static final String DEFAULT_CHARSET_UTF_8 = "UTF-8";
+
 	/** 默认24小时制日期时间格式 */
 	public static final String DATE_TIME_24HOUR_FORMAT = "yyyy-MM-dd HH:mm:ss";
 	/** 默认12小时制日期时间格式 */

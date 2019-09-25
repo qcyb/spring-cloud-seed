@@ -23,7 +23,7 @@ public class MapperAop {
 
 	/**
 	 * @方法名称 process
-	 * @功能描述
+	 * @功能描述 当参数为VO对象时，将VO转成Map
 	 * @作者 yuminjun
 	 * @创建时间 2019年9月12日 下午3:09:52
 	 * @param point

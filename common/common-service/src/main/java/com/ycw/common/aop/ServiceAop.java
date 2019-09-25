@@ -17,6 +17,15 @@ public class ServiceAop {
 	private void queryMenthodPoint() {
 	}
 
+	/**
+	 * @方法名称 process
+	 * @功能描述 当方法含有PageParams参数时，使用分页查询
+	 * @作者     yuminjun
+	 * @创建时间 2019年9月25日 上午9:51:13
+	 * @param point
+	 * @return
+	 * @throws Throwable
+	 */
 	@Around(value = "queryMenthodPoint()")
 	public Object process(ProceedingJoinPoint point) throws Throwable {
 		/* 访问目标方法的参数 */
