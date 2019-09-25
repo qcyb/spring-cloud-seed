@@ -1,9 +1,8 @@
 # spring-cloud-seed
 一套完整的基于SpringCloud的多模块分布式项目，集成Mybatis-plus, PageHelper等常用插件，便于简洁快速开发
+
 ├── USER-API                      // 公共API模块,可打成jar包供外部Feign分布式调用
-
 │   ├── src/main
-
 │   ├── ├──java/com/ycw/user      
 │   ├── ├──├──service             // API接口
 │   ├── ├──├──vo                  // 接口返回对象
