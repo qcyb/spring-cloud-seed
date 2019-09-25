@@ -1,4 +1,4 @@
-	# spring-cloud-seed
+# spring-cloud-seed
 	├── USER-API                      // 公共API模块,可打成jar包供外部Feign分布式调用  
 	│   ├── src/main  
 	│   ├── ├──java/com/ycw/user   
