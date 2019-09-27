@@ -24,5 +24,8 @@
 	│   ├── ├──├──controller          // 控制层  
 	│   ├── ├──resources  
 	│   ├── ├──├──application.yml     // springboot配置文件          
-	│   ├── ├──├──bootstrap.yml       // 分布式配置中心cousul配置文件  
+	│   ├── ├──├──bootstrap.yml       // 分布式注册中心cousul配置文件  
 	├── pom.xml                         
+
+相关文章： 
+1. [服务注册中心Consul安装与配置（windows）](https://blog.csdn.net/qq_30133811/article/details/101377828)
