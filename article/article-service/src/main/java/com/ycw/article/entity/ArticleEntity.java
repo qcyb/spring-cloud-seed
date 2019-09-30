@@ -2,7 +2,6 @@ package com.ycw.article.entity;
 
 import java.time.LocalDateTime;
 
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.ycw.common.base.BaseEntity;
 
@@ -32,61 +31,51 @@ public class ArticleEntity extends BaseEntity {
  	/**
  	 *标题
  	 */
-	@TableField("title")
 	private String title;
 
  	/**
  	 *简介
  	 */
-	@TableField("introduction")
 	private String introduction;
 
  	/**
  	 *分类
  	 */
-	@TableField("article_type")
 	private String articleType;
 
  	/**
  	 *作者
  	 */
-	@TableField("author")
 	private String author;
 
  	/**
  	 *发布时间
  	 */
-	@TableField("publish_time")
 	private LocalDateTime publishTime;
 
  	/**
  	 *内容
  	 */
-	@TableField("content")
 	private String content;
 
  	/**
  	 *是否展示
  	 */
-	@TableField("is_show")
 	private Integer isShow;
 
  	/**
  	 *阅读数
  	 */
-	@TableField("read_count")
 	private Integer readCount;
 
  	/**
  	 *喜欢数
  	 */
-	@TableField("like_count")
 	private Integer likeCount;
 
  	/**
  	 *不喜欢数
  	 */
-	@TableField("unlike_count")
 	private Integer unlikeCount;
 
 }
