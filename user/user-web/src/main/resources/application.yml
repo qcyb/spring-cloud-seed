@@ -94,7 +94,7 @@ feign:
         loggerLevel: full
   # 开启熔断
   hystrix:
-    enabled: false
+    enabled: true
   # 使用 ApacheHttpClient
   httpclient:
     enabled: true 
