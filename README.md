@@ -30,3 +30,4 @@
 相关文章：
 1. [服务注册中心Consul安装与配置（windows）](https://blog.csdn.net/qq_30133811/article/details/101377828)
 2. [项目启动](https://blog.csdn.net/qq_30133811/article/details/101759846)
+3. [为何要构建Api、Service、Web三层](https://blog.csdn.net/qq_30133811/article/details/101772734)
