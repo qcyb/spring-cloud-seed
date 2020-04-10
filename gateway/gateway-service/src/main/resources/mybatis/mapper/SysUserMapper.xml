@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ycw.user.mapper.ISysUserMapper">
+
+    <sql id="column_list">
+        t.id id, <!-- 主键 -->
+        t.user_num userNum, <!-- 用户编号 -->
+        t.real_name realName, <!-- 真实姓名 -->
+        t.nick_name nickName, <!-- 昵称 -->
+        t.login_name loginName, <!-- 登录名 -->
+        t.password password, <!-- 登录密码 -->
+        t.salt salt, <!-- 盐 -->
+        t.profile_photo_url profilePhotoUrl, <!-- 头像url -->
+        t.sex sex, <!-- 性别 -->
+        t.birthday birthday, <!-- 生日 -->
+        t.mobile_phone mobilePhone, <!-- 手机号 -->
+        t.e_mail eMail, <!-- 电子邮箱 -->
+        t.id_card idCard, <!-- 身份证号 -->
+        t.qq qq, <!-- QQ -->
+        t.wechat wechat, <!-- 微信 -->
+        t.token token, <!-- 登录token -->
+        t.status status, <!-- 状态：0-失效；1-生效 -->
+        t.login_status loginStatus, <!-- 登录状态 -->
+        t.last_login_time lastLoginTime, <!-- 最后登录时间 -->
+        t.del_ind delInd, <!-- 删除标识：0-未删除；1-删除 -->
+        t.create_user createUser, <!-- 创建人 -->
+        t.create_time createTime, <!-- 创建时间 -->
+        t.update_user updateUser, <!-- 更新人 -->
+        t.update_time updateTime, <!-- 更新时间 -->
+        t.version version <!-- 版本号 -->
+	</sql>
+
+    <sql id="where_filters">
+        <where>
+    		t.del_ind = '0'
+			<if test="id != null">
+				AND t.id = #{id}
+			</if>
+			<if test="userNum != null and userNum != ''">
+				AND t.user_num = #{userNum}
+			</if>
+			<if test="realName != null and realName != ''">
+				AND t.real_name = #{realName}
+			</if>
+			<if test="nickName != null and nickName != ''">
+				AND t.nick_name = #{nickName}
+			</if>
+			<if test="loginName != null and loginName != ''">
+				AND t.login_name = #{loginName}
+			</if>
+			<if test="password != null and password != ''">
+				AND t.password = #{password}
+			</if>
+			<if test="salt != null and salt != ''">
+				AND t.salt = #{salt}
+			</if>
+			<if test="profilePhotoUrl != null and profilePhotoUrl != ''">
+				AND t.profile_photo_url = #{profilePhotoUrl}
+			</if>
+			<if test="sex != null">
+				AND t.sex = #{sex}
+			</if>
+			<if test="birthday != null">
+				AND t.birthday = #{birthday}
+			</if>
+			<if test="mobilePhone != null and mobilePhone != ''">
+				AND t.mobile_phone = #{mobilePhone}
+			</if>
+			<if test="eMail != null and eMail != ''">
+				AND t.e_mail = #{eMail}
+			</if>
+			<if test="idCard != null and idCard != ''">
+				AND t.id_card = #{idCard}
+			</if>
+			<if test="qq != null and qq != ''">
+				AND t.qq = #{qq}
+			</if>
+			<if test="wechat != null and wechat != ''">
+				AND t.wechat = #{wechat}
+			</if>
+			<if test="token != null and token != ''">
+				AND t.token = #{token}
+			</if>
+			<if test="status != null">
+				AND t.status = #{status}
+			</if>
+			<if test="loginStatus != null">
+				AND t.login_status = #{loginStatus}
+			</if>
+			<if test="lastLoginTime != null">
+				AND t.last_login_time = #{lastLoginTime}
+			</if>
+			<if test="createUser != null">
+				AND t.create_user = #{createUser}
+			</if>
+			<if test="createTime != null">
+				AND t.create_time = #{createTime}
+			</if>
+			<if test="updateUser != null">
+				AND t.update_user = #{updateUser}
+			</if>
+			<if test="updateTime != null">
+				AND t.update_time = #{updateTime}
+			</if>
+			<if test="version != null">
+				AND t.version = #{version}
+			</if>
+        </where>
+        ORDER BY t.create_time DESC
+    </sql>
+
+    <!--根据条件查询列表-->
+    <select id="querySysUserList" parameterType="map" resultType="map">
+        SELECT
+		<include refid="column_list"/>
+        FROM sys_user t
+        <include refid="where_filters"/>
+    </select>
+
+</mapper>

@@ -8,6 +8,10 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.Version;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 
 import lombok.Data;
 
@@ -39,6 +43,8 @@ public class BaseEntity implements Serializable {
 	 * 创建时间
 	 */
 	@TableField("create_time")
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
 	private LocalDateTime createTime;
 
 	/**
@@ -51,6 +57,8 @@ public class BaseEntity implements Serializable {
 	 * 更新时间
 	 */
 	@TableField("update_time")
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
 	private LocalDateTime updateTime;
 
 	/**

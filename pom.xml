@@ -147,11 +147,11 @@
 	</repositories>
 	<distributionManagement>
 		<repository>
-			<id>lexiangbao-releases</id>
+			<id>ycw-releases</id>
 			<url>http://39.105.58.23:8081/repository/ycw-releases/</url>
 		</repository>
 		<snapshotRepository>
-			<id>lexiangbao-snapshots</id>
+			<id>ycw-snapshots</id>
 			<url>http://39.105.58.23:8081/repository/ycw-snapshots/</url>
 		</snapshotRepository>
 	</distributionManagement>
@@ -160,6 +160,7 @@
 		<module>user</module>
 		<module>article</module>
 		<module>common</module>
+		<module>gateway</module>
 	</modules>
 
 </project>

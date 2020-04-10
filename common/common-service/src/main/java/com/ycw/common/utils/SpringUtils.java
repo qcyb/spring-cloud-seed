@@ -7,16 +7,16 @@ import org.springframework.stereotype.Component;
 
 /**
  * @类名称 SpringUtils.java
- * @类描述 Spring工具类
+ * @类描述 <pre>Spring工具类</pre>
  * @作者 yuminjun yuminjun@lexiangbao.com
- * @创建时间 2019年9月12日 下午5:15:50
+ * @创建时间 2019年8月8日 下午12:07:50
  * @版本 1.00
  *
  * @修改记录
  * <pre>
  *     版本                       修改人 		修改日期 		 修改内容描述
  *     ----------------------------------------------
- *     1.00 	yuminjun 	2019年9月12日
+ *     1.00 	yuminjun 	2019年8月8日
  *     ----------------------------------------------
  * </pre>
  */
@@ -26,11 +26,8 @@ public class SpringUtils implements ApplicationContextAware {
 	private static ApplicationContext applicationContext;
 
 	@Override
-	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-		if (applicationContext == null) {
-			SpringUtils.applicationContext = applicationContext;
-		}
-
+	public void setApplicationContext(ApplicationContext applicationContextParam) throws BeansException {
+		applicationContext = applicationContextParam;
 	}
 
 	public static ApplicationContext getApplicationContext() {
@@ -38,14 +35,15 @@ public class SpringUtils implements ApplicationContextAware {
 	}
 
 	public static Object getBean(String name) {
-		return applicationContext == null ? null : getApplicationContext().getBean(name);
+		return applicationContext == null ? null : applicationContext.getBean(name);
 	}
 
 	public static <T> T getBean(Class<T> clazz) {
-		return applicationContext == null ? null : getApplicationContext().getBean(clazz);
+		return applicationContext == null ? null : applicationContext.getBean(clazz);
 	}
 
 	public static <T> T getBean(String name, Class<T> clazz) {
-		return applicationContext == null ? null : getApplicationContext().getBean(name, clazz);
+		return applicationContext == null ? null : applicationContext.getBean(name, clazz);
 	}
+
 }

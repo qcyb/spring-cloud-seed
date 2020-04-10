@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.netflix.client.ClientException;
 import com.ycw.common.response.ResponseCode;
 import com.ycw.common.response.ResponseVO;
 

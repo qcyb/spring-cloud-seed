@@ -43,7 +43,7 @@ public class TransactionManagerConfig {
 
     private static final int AOP_TIME_OUT = 50000;
 
-    private static final String AOP_POINTCUT_EXPRESSION = "execution(* com.ycw..*.service.impl.*Impl.*(..)))";
+    private static final String AOP_POINTCUT_EXPRESSION = "execution(* com.ycw..*.api.impl.*Impl.*(..)))";
 
     @Autowired
     private PlatformTransactionManager transactionManager;
@@ -71,7 +71,7 @@ public class TransactionManagerConfig {
 
         Map<String, TransactionAttribute> methodMap = new HashMap<>();
 
-        /* 可以提及事务或回滚事务的方法 */
+        /* 可以提交事务或回滚事务的方法 */
         methodMap.put("add*", requiredTx);
         methodMap.put("save*", requiredTx);
         methodMap.put("update*", requiredTx);
